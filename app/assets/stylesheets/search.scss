@@ -7,5 +7,29 @@ body{
 }
 
 #search_results_container{
+	
 	margin-top: 20px;
+	
+	table {
+		tbody{
+			tr:hover {
+				background-color: #ffa;
+				cursor: pointer;
+			}
+		}
+		thead {
+			text-transform: capitalize;
+		}
+	}
+}
+
+#searchDetailsModal {
+	.row {
+		margin: 2% 0 2% 0;
+
+		.col-md-3 {
+			font-weight: bold;
+			text-transform: capitalize;
+		}
+	}
 }

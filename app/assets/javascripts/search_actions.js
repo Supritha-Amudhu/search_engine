@@ -17,12 +17,31 @@ $(document).ready(function(e){
 		    contentType: "application/json",
 		    data: formData,
 		    success: function(data){
-		    	// alert("Success !! \n" + data);
 		    	$('#search_results_container').html(data);
+		    	search.addRowClickListener();
+		    	search.focusSearchTab($("#search_form #search_param").val());		    	
 		    },    	
 		    error: function(error){
-		    	alert("Search not successful ! \n" + error.responseText);
+		    	$('#search_error').html("<div class='alert alert-danger'>"+ "Error during search. Please enter another search term." +"</div>");
 		    }
 		});
 	});
 });
+
+var search = {
+	addRowClickListener: function() {
+		$('#search_results_container table tbody tr.info-detail-src').unbind();
+		$('#search_results_container table tbody tr.info-detail-src').click(function(e){
+			var modalBody = $(this).next().find(".info-detail-target").html();
+			$("#searchDetailsModal .modal-body").html(modalBody);
+			$("#searchDetailsModal").modal();
+		});
+	},
+
+	focusSearchTab: function(search_param) {
+		if (search_param == "all")
+    		$("#tickets_tab a").click();
+    	else
+    		$("#"+search_param+"_tab a").click();
+	}
+}

@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   end
 
   def search_results
-    @filtered_tickets, filtered_users, @filtered_orgs = nil
+    @filtered_tickets, filtered_users, @filtered_orgs = []
     @no_results = false
   	search_text = params[:search_text].strip
   	search_param = params[:search_param]
@@ -11,7 +11,7 @@ class SearchController < ApplicationController
   	@tickets = JSON.parse(File.read('public/tickets.json'))
   	@users = JSON.parse(File.read('public/users.json'))
   	@orgs = JSON.parse(File.read('public/organizations.json'))
-    if search_param.eql?("all" || "tickets") || search_param.eql?("tickets")
+    if search_param.eql?("all") || search_param.eql?("tickets")
       if search_text.eql?("") 
         @filtered_tickets = @tickets.select {|ticket| ticket.has_value?("")} 
       else
@@ -32,7 +32,7 @@ class SearchController < ApplicationController
         @filtered_orgs = @orgs.select {|org| org.to_s.downcase.include?(search_text.downcase)}
       end
     end
-    @no_results = (@filtered_tickets || @filtered_users || @filtered_orgs).empty? ? true : false
+    @no_results = (@filtered_tickets.empty? && @filtered_users.empty? && @filtered_orgs.empty?) ? true : false
     render :partial => "search_results", :locals => { :ticket_results => @filtered_tickets, 
     	                                   :user_results => @filtered_users, 
                                          :org_results => @filtered_orgs,
