@@ -26,6 +26,11 @@ $(document).ready(function(e){
 		    }
 		});
 	});
+	// if (response.type == "error") {
+	//     $('#msgs').html("<div class='alert alert-danger'>"+response.text+"</div>");
+	// } else {
+	//     $('#msgs').html("<div class='alert alert-success'>"+response.text+"</div>");
+	// }
 });
 
 var search = {
