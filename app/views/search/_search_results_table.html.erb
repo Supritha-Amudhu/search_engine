@@ -1,0 +1,22 @@
+<% if items && (items.length > 0) %>
+	<table class="table table-inverse table-bordered">
+		<thead class="thead-inverse">
+			<tr>
+				<% items.first.keys.each do |key| %>
+					<th> <%= key%> </th>
+				<% end %>
+			</tr>
+		</thead>
+		<tbody>
+			<% if items %>  
+			      <% items.each do |item| %>
+			      	<tr>
+			      		<% item.keys.each do |key| %>
+			          		<td><%= item[key] %></td>
+			          	<% end %>
+		          	</tr>
+			      <% end %>
+			<% end %>
+		</tbody>
+	</table>
+<% end %>
