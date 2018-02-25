@@ -2,22 +2,21 @@
   <div class="page-header">
     <h1>Search</h1>      
   </div>
-  <!-- <form accept-charset="UTF-8" id="search_form" action="/search_results" method="GET"> -->
   	<%= form_tag('/search_results', :remote => true, :id => "search_form", :method => 'GET') do %>
 	    <div class="container">
 		    <div class="row">    
 		        <div class="col-xs-8 col-xs-offset-2">
 				    <div class="input-group">
 		                <div class="input-group-btn search-panel">
-		                    <button type="button" id="menu_types" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-		                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
-		                    </button>
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="search_category">
+                              <span id="search_concept">All</span> <span class="caret"></span>
+                          </button>
 		                    <ul class="dropdown-menu" role="menu">
 		                      <li><a href="#tickets">Tickets</a></li>
 		                      <li><a href="#users">Users</a></li>
 		                      <li><a href="#organizations">Organizations</a></li>
 		                      <li class="divider"></li>
-		                      <li><a href="#all">Anything</a></li>
+		                      <li><a href="#all">All</a></li>
 		                    </ul>
 		                </div>
 		                <input type="hidden" name="search_param" value="all" id="search_param">         
@@ -30,7 +29,6 @@
 			</div>
 		</div>
 
-		<%= render :partial => "search_results", :locals => { :ticket_results => nil, :user_results => nil, :org_results => nil } %>
+		<%= render :partial => "search_results", :locals => { :ticket_results => nil, :user_results => nil, :org_results => nil, :no_results => false } %>
 	<% end %>
-  <!-- </form>      -->
 </div>

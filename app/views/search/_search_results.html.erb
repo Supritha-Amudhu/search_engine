@@ -1,5 +1,24 @@
 <div id="search_results_container">
-	<%= render :partial => "search_results_table", :locals => { :items => ticket_results } %>
-	<%= render :partial => "search_results_table", :locals => { :items => user_results } %>
-	<%= render :partial => "search_results_table", :locals => { :items => org_results } %>	
+	<% if no_results %>
+		Sorry, no results found.
+	<% else %>
+		<div class="container">
+			<ul class="nav nav-tabs">
+				<li><a data-toggle="tab" href="#tickets">Tickets</a></li>
+				<li><a data-toggle="tab" href="#users">Users</a></li>
+				<li><a data-toggle="tab" href="#organizations">Organizations</a></li>
+			</ul>	
+			<div class="tab-content">
+				<div id="tickets" class="tab-pane fade in active">
+					<%= render :partial => "search_results_table", :locals => { :items => ticket_results, :param => "Tickets" } %>
+				</div>
+				<div id="users" class="tab-pane fade">
+					<%= render :partial => "search_results_table", :locals => { :items => user_results, :param => "Users" } %>
+				</div>
+				<div id="organizations" class="tab-pane fade">
+					<%= render :partial => "search_results_table", :locals => { :items => org_results, :param => "Organizations" } %>
+				</div>
+			</div>
+		</div>	
+	<% end %>
 </div>

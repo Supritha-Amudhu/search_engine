@@ -1,9 +1,10 @@
 <% if items && (items.length > 0) %>
+	<!-- <li><a data-toggle="tab" href="#"><%= param %></a></li> -->
 	<table class="table table-inverse table-bordered">
 		<thead class="thead-inverse">
 			<tr>
 				<% items.first.keys.each do |key| %>
-					<th> <%= key%> </th>
+					<th> <%= key %> </th>
 				<% end %>
 			</tr>
 		</thead>
