@@ -1,7 +1,7 @@
 <% if items && (items.length > 0) %>
 	<%
 		table_keys = Hash.new
-		table_keys["tickets"] = Set.new ["_id", "type", "subject", "status"]
+		table_keys["tickets"] = Set.new ["_id", "priority", "subject", "status"]
 		table_keys["users"] = Set.new ["_id", "name", "email", "role"]
 		table_keys["organizations"] = Set.new ["_id", "name", "details"]
 	%>

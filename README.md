@@ -2,7 +2,7 @@
 
 Search Engine:
 
-Search Engine is a web application built on Ruby using Rails and Bootstrap. It takes in 3 static JSON files as input. The static files are details about Users, Tickets and Organizations. The application parses the JSON files. The user can enter a search term under any of the 3 search parameters mentioned. The user can also search within all 3 parameters. Upon searching for a term, search results are displayed based on the parsed JSON files. The user can click on the search results and a modal will be displayed, holding the entire User/Ticket/Organization details.
+Search Engine is a web application built on Ruby using Rails and Bootstrap. It takes in 3 static JSON files as input. The static files are details about Users, Tickets and Organizations. The application parses the JSON files. The user can enter a search term under any of the 3 search parameters mentioned, using any search field for each parameter. Upon searching for a term, search results are displayed based on the parsed JSON files. The user can click on the search results and a modal will be displayed, holding the entire User/Ticket/Organization details.
 
 
 
