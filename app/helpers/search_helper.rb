@@ -24,5 +24,9 @@ module SearchHelper
 	      end
 	    end
 	end
-	
+
+	def is_item_empty?(item)
+		item && item.empty?
+	end
+
 end
