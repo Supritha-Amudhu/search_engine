@@ -13,9 +13,8 @@ class SearchController < ApplicationController
       @search_keys[:users] = @users.first.keys if (@users && !@users.empty?)
       @search_keys[:organizations] = @organizations.first.keys if (@organizations && !@organizations.empty?)
     rescue StandardError => e
-      render json: {
-        error: e.to_s
-      }, status: :not_found
+      logger.error(e.to_s)
+      redirect_to search_index_path
     end
   end
 
@@ -43,9 +42,8 @@ class SearchController < ApplicationController
                                            :no_results => @no_results,
                                            :message => message}
     rescue StandardError => e
-      render json: {
-        error: e.to_s
-      }, status: :not_found
+      logger.error(e.to_s)
+      redirect_to search_index_path
     end
   end
 
@@ -59,9 +57,14 @@ class SearchController < ApplicationController
 
     # File parsed everytime during search because it can be edited anytime
     def parse_files
-      @tickets = JSON.parse(File.read('public/tickets.json'))
-      @users = JSON.parse(File.read('public/users.json'))
-      @organizations = JSON.parse(File.read('public/organizations.json'))
+      begin
+        @tickets = JSON.parse(File.read('public/tickets.json'))
+        @users = JSON.parse(File.read('public/users.json'))
+        @organizations = JSON.parse(File.read('public/organizations.json'))
+      rescue StandardError => e
+        logger.error("Error when uploading files.")
+        redirect_to search_index_path
+      end
     end
 
 end
