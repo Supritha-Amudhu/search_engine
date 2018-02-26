@@ -1,4 +1,6 @@
 module SearchHelper
+
+	# Searches for results based on the search parameter and search term
 	def assign_item_values(search_text, search_param)
 		if search_param.eql?("all") || search_param.eql?("tickets")
 	      if search_text.eql?("") 
@@ -22,4 +24,5 @@ module SearchHelper
 	      end
 	    end
 	end
+	
 end

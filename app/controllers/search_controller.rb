@@ -2,9 +2,10 @@ class SearchController < ApplicationController
 
   include SearchHelper
 
-  before_action :initialize_variables
+  before_action :initialize_variables, :only => :search_results
 
   def search_results
+    debugger
   	search_text = params[:search_text].strip
   	search_param = params[:search_param]
     assign_item_values(search_text, search_param)
@@ -17,14 +18,15 @@ class SearchController < ApplicationController
 
   private
 
-  def initialize_variables
-    # Variables initialized to default values
-    @filtered_tickets, filtered_users, @filtered_orgs = []
-    @no_results = false
-    
-    # File parsed everytime during search because it can be edited anytime
-    @tickets = JSON.parse(File.read('public/tickets.json'))
-    @users = JSON.parse(File.read('public/users.json'))
-    @orgs = JSON.parse(File.read('public/organizations.json'))
-  end
+    def initialize_variables
+      # Variables initialized to default values
+      @filtered_tickets, filtered_users, @filtered_orgs = []
+      @no_results = false
+
+      # File parsed everytime during search because it can be edited anytime
+      @tickets = JSON.parse(File.read('public/tickets.json'))
+      @users = JSON.parse(File.read('public/users.json'))
+      @orgs = JSON.parse(File.read('public/organizations.json'))
+    end
+
 end

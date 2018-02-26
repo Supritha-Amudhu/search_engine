@@ -29,7 +29,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "rspec-rails", :group => [:development, :test]
+gem "rspec-rails", '~> 3.7.2', :group => [:development, :test]
+
+gem 'rails-controller-testing'
 
 gem "jquery-rails"
 
