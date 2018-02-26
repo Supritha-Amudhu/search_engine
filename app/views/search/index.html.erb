@@ -50,7 +50,7 @@
 	        </div>
 		</div>
 
-		<%= render :partial => "search_results", :locals => { :ticket_results => nil, :user_results => nil, :org_results => nil, :no_results => false, :message => nil } %>
+		<%= render :partial => "search_results", :locals => { :ticket_results => nil, :user_results => nil, :org_results => nil, :no_results => false, :message => "Please search for a term to get results." } %>
 	<% end %>
 	<div class="modal fade" id="searchDetailsModal" tabindex="-1" role="dialog" aria-labelledby="searchDetailsModalTitle" aria-hidden="true">
 	  <div class="modal-dialog" role="document" aria-hidden="true">
