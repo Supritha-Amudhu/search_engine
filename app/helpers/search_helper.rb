@@ -25,6 +25,7 @@ module SearchHelper
 	    end
 	end
 
+	# Returns true if the search results for tickets, users or organizations if empty based on the item passed
 	def is_item_empty?(item)
 		item && item.empty?
 	end

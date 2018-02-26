@@ -4,6 +4,8 @@ class SearchController < ApplicationController
 
   before_action :initialize_variables, :only => :search_results
 
+  # Method to retrieve search results for different search terms and parameters
+  # no_results - checks if results for tickets, users or organizations has values or not
   def search_results
   	search_text = params[:search_text].strip
   	search_param = params[:search_param].downcase
