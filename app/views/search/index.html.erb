@@ -4,34 +4,53 @@
   </div>
   	<%= form_tag('/search_results', :remote => true, :id => "search_form", :method => 'GET') do %>
 	    <div class="container">
-		    <div class="row">    
-		        <div class="col-xs-8 col-xs-offset-2">
-				    <div class="input-group">
-		                <div class="input-group-btn search-panel">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="search_category">
-                              <span id="search_concept">All</span> <span class="caret"></span>
-                          </button>
-		                    <ul class="dropdown-menu" role="menu">
-		                      <li><a href="#tickets">Tickets</a></li>
-		                      <li><a href="#users">Users</a></li>
-		                      <li><a href="#organizations">Organizations</a></li>
-		                      <li class="divider"></li>
-		                      <li><a href="#all">All</a></li>
-		                    </ul>
-		                </div>
-		                <input type="hidden" name="search_param" value="all" id="search_param">         
-		                <input type="text" class="form-control" name="search_text" placeholder="Search">
-		                <span class="input-group-btn">
-		                    <button class="btn btn-info" id="search_button" type="submit">
-		                    	<span class="glyphicon glyphicon-search"></span>
-		                    </button>
-		                </span>
+	        <div class="col-xs-8 col-xs-offset-2">
+			    <div class="row">
+	                <div class="form-group col-sm-4">
+					    <label for="ticketSearchField">Tickets</label>
+					    <select class="form-control" id="ticketSearchField" name ="ticketSearchField">
+					    	<option value="none">-- None --</option>
+					    	<% @search_keys[:tickets].each do |ticket_key| %>
+							    <option value = "<%= ticket_key %>" ><%= ticket_key %></option>
+							<% end %>
+					    </select>
+					</div>
+
+					<div class="form-group col-sm-4">
+					    <label for="userSearchField">Users</label>
+					    <select class="form-control" id="userSearchField" name="userSearchField">
+					    	<option value="none">-- None --</option>
+					    	<% @search_keys[:users].each do |user_key| %>
+							    <option value = "<%= user_key %>" ><%= user_key %></option>
+							<% end %>
+					    </select>
+					</div>
+
+					<div class="form-group col-sm-4">
+					    <label for="organizationSearchField">Organizations</label>
+					    <select class="form-control" id="organizationSearchField" name="organizationSearchField">
+					    	<option value="none">-- None --</option>
+						    <% @search_keys[:organizations].each do |organization_key| %>
+							    <option value = "<%= organization_key %>" ><%= organization_key %></option>
+							<% end %>
+					    </select>
+					</div>
+				</div>
+				<div class = "row" >    
+					<div class="form-group col-md-8 align-middle">
+		                <input type="text" class="form-control" name="search_text" placeholder="Search">             
+		            </div>
+		            <div class = "col-md-4">    
+			            <span class="input-group-btn">    
+			            	<button class="btn btn-primary" id="search_button" type="submit"> Search </button>
+	                    </span>
 		            </div>
 		        </div>
-			</div>
+		        
+	        </div>
 		</div>
 
-		<%= render :partial => "search_results", :locals => { :ticket_results => nil, :user_results => nil, :org_results => nil, :no_results => false } %>
+		<%= render :partial => "search_results", :locals => { :ticket_results => nil, :user_results => nil, :org_results => nil, :no_results => false, :message => nil } %>
 	<% end %>
 	<div class="modal fade" id="searchDetailsModal" tabindex="-1" role="dialog" aria-labelledby="searchDetailsModalTitle" aria-hidden="true">
 	  <div class="modal-dialog" role="document" aria-hidden="true">

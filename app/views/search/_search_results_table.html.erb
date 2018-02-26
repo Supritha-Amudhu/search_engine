@@ -1,13 +1,9 @@
 <% if items && (items.length > 0) %>
-	<!-- <li><a data-toggle="tab" href="#"><%= param %></a></li> -->
 	<%
-		ticket_keys = Set.new ["_id", "type", "subject", "status"]
-		user_keys = Set.new ["_id", "name", "email", "role"]
-		org_keys = Set.new ["_id", "name", "details"]
 		table_keys = Hash.new
-		table_keys["tickets"] = ticket_keys
-		table_keys["users"] = user_keys
-		table_keys["orgs"] = org_keys
+		table_keys["tickets"] = Set.new ["_id", "type", "subject", "status"]
+		table_keys["users"] = Set.new ["_id", "name", "email", "role"]
+		table_keys["organizations"] = Set.new ["_id", "name", "details"]
 	%>
 	<table class="table table-inverse table-bordered">
 		<thead class="thead-inverse">

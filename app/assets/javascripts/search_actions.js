@@ -1,12 +1,4 @@
 $(document).ready(function(e){
-	// Assign drop down values for search parameter
-    $('.search-panel .dropdown-menu').find('a').click(function(e) {
-		e.preventDefault();
-		var param = $(this).attr("href").replace("#","");
-		var concept = $(this).text();
-		$('.search-panel span#search_concept').text(concept);
-		$('.input-group #search_param').val(param);
-	});
 
     // Ajax call to update search results
 	$('#search_button').click(function(e) {
@@ -21,7 +13,7 @@ $(document).ready(function(e){
 		    success: function(data){
 		    	$('#search_results_container').html(data);
 		    	search.addRowClickListener();
-		    	search.focusSearchTab($("#search_form #search_param").val());		    	
+		    	search.focusSearchTab();		    	
 		    },    	
 		    error: function(error){
 		    	$('#search_error').html("<div class='alert alert-danger'>"+ "Error during search. Please enter another search term." +"</div>");
@@ -44,10 +36,19 @@ var search = {
 
 	// Highlights the current tab on focus - for Users, Organizations or Tickets.
 	// It focuses on Tickets if search parameter 'All' is selected
-	focusSearchTab: function(search_param) {
-		if (search_param == "all")
+	focusSearchTab: function() {
+		var search_field = $("#search_form #ticketSearchField").val();
+    	if (search_field != "none")
     		$("#tickets_tab a").click();
-    	else
-    		$("#"+search_param+"_tab a").click();
+    	else {
+    		search_field = $("#search_form #userSearchField").val();
+    		if (search_field != "none")
+    			$("#users_tab a").click();
+    		else {
+				search_field = $("#search_form #organizationSearchField").val();
+				if (search_field != "none")
+					$("#organizations_tab a").click();
+			}
+    	}
 	}
 };

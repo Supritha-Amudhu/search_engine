@@ -21,6 +21,13 @@ describe SearchController, :type => :controller do
 			response.should render_template(:partial => '_search_results')
 		end
 
+		it " should return search results for a search term with no search list chosen " do
+			search_text = "test"
+			get :search_results, :params => {:search_text => search_text, :search_param => "All"}
+			response.status.should be 200
+			response.should render_template(:partial => '_search_results')
+		end
+
 		it " should return search results for a search term 'zendesk' with search parameter 'All' " do
 			search_text = 'zendesk'
 			get :search_results, :params => {:search_text => search_text, :search_param => "All"}

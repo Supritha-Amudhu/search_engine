@@ -1,5 +1,7 @@
 <div id="search_results_container">
-	<% if no_results %>
+	<% if message %>
+		<%= message %>
+	<% elsif no_results %>
 		Sorry, no results found.
 	<% else %>
 		<div class="container">
@@ -16,7 +18,7 @@
 					<%= render :partial => "search_results_table", :locals => { :items => user_results, :param => "users" } %>
 				</div>
 				<div id="organizations" class="tab-pane fade">
-					<%= render :partial => "search_results_table", :locals => { :items => org_results, :param => "orgs" } %>
+					<%= render :partial => "search_results_table", :locals => { :items => org_results, :param => "organizations" } %>
 				</div>
 			</div>
 		</div>	

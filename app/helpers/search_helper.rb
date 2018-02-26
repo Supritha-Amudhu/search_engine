@@ -1,28 +1,17 @@
 module SearchHelper
 
-	# Searches for results based on the search parameter and search term
-	def assign_item_values(search_text, search_param)
-		if search_param.eql?("all") || search_param.eql?("tickets")
-	      if search_text.eql?("") 
-	        @filtered_tickets = @tickets.select {|ticket| ticket.has_value?("")} 
-	      else
-	        @filtered_tickets = @tickets.select {|ticket| ticket.to_s.downcase.include?(search_text.downcase)} 
-	      end
-	    end
-	    if search_param.eql?("all") || search_param.eql?("users")
-	      if search_text.eql?("") 
-	        @filtered_users = @users.select {|user| user.has_value?("")} 
-	      else
-	        @filtered_users = @users.select {|user| user.to_s.downcase.include?(search_text.downcase)}
-	      end
-	    end
-	    if search_param.eql?("all") || search_param.eql?("organizations")
-	      if search_text.eql?("") 
-	        @filtered_orgs = @orgs.select {|org| org.has_value?("")} 
-	      else
-	        @filtered_orgs = @orgs.select {|org| org.to_s.downcase.include?(search_text.downcase)}
-	      end
-	    end
+	# Retrieve search results for Tickets, Users and Organiztions based on the list item chosen, the list parameter (fields) chosen,
+	# and the search term used.
+	def assign_item_values(search_list, search_param, search_text)
+		if(search_param.eql?("none"))
+			filtered_values = []
+		else
+			if search_text.eql?("") 
+		        filtered_values = search_list.select {|ticket| ticket.has_value?("")} 
+		    else
+				filtered_values = search_list.select {|list_item| list_item["#{search_param}"].to_s.downcase.include?(search_text.downcase)} 
+			end
+		end
 	end
 
 	# Returns true if the search results for tickets, users or organizations if empty based on the item passed
