@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Search Engine:
 
-Things you may want to cover:
+Search Engine is a web application built on Ruby using Rails and Bootstrap. It takes in 3 static JSON files as input. The static files are details about Users, Tickets and Organizations. The application parses the JSON files. The user can enter a search term under any of the 3 search parameters mentioned. The user can also search within all 3 parameters. Upon searching for a term, search results are displayed based on the parsed JSON files. The user can click on the search results and a modal will be displayed, holding the entire User/Ticket/Organization details.
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+GEM versions used:
 
-* Database initialization
+* Ruby version - 2.4.1p111
 
-* How to run the test suite
+* Rails version - 5.1.5
 
-* Services (job queues, cache servers, search engines, etc.)
+* RVM version - 1.29.3
 
-* Deployment instructions
+* RSpec version - 3.7
+ 
+* There are no databases used here.
 
-* ...
+
+
+
+Steps to Install and Run the application on OSX:
+
+1. Go to your workspace, and execute the command - 'git clone https://github.com/Supritha-Amudhu/search_engine.git'
+2. cd into search_engine.
+3. Create a gemset with the above mentioned Ruby and Rails version using - '$ rvm gemset create <gemset name>'
+4. Run 'bundle install'
+5. Run the command - 'rails server' to start the server.
+6. Open the URL - 'http://localhost:3000/' - This will display the Home Page of the application.
+
+
+
+
+Steps to run RSpec:
+
+1. Open a new tab in your terminal.
+2. Run the command - 'rake spec' to execute all the defined test cases.
+
+
+
